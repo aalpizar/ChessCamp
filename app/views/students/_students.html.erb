@@ -3,7 +3,8 @@
 <table class="table">
   <tr>
     <th width="260">Name</th>
-    <th width="120">Date of Birth</th>
+    <th width="120">Age</th>
+    <th width="150">Date of Birth</th>
     <th width="120">Rating</th>
     <th></th>
     <th></th>
@@ -12,7 +13,8 @@
 <% students.each do |student| %>
   <tr>
     <td><%= link_to student.proper_name, student_path(student) %></td>
-    <td align="center"><%= student.date_of_birth %></td>
+    <td align="center"><%= student.age %></td>
+    <td align="center"><%= student.date_of_birth.strftime('%m/%d/%y') %></td>
     <td align="center"><%= student.rating %></td>
     <td><%= link_to 'Edit', edit_student_path(student), class: "button tiny radius" %></td>
   </tr>
