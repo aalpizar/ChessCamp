@@ -14,6 +14,7 @@ class InstructorsController < ApplicationController
 
   def new
     @instructor = Instructor.new
+    # @instructor.users.build
   end
 
   def edit

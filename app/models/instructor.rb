@@ -2,10 +2,13 @@ class Instructor < ActiveRecord::Base
   include ChessCampHelpers
   mount_uploader :picture, PictureUploader
 
+
   # relationships
   has_many :camp_instructors
   has_many :camps, through: :camp_instructors
   has_one :user
+
+  accepts_nested_attributes_for :user, reject_if: lambda { |user| user[:username].blank? }, allow_destroy: true
 
   # validations
   validates_presence_of :first_name, :last_name, :phone
