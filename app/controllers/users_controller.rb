@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+	before_action :check_login, except: [:new, :create]
+
 	def index
 	end
 
@@ -16,17 +18,19 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(user_params)
 		if @user.save
-			redirect_to @user, notice: "The user #{@user.username} was added to the system."
+			session[:user_id] = @user.id
+			redirect_to(@user, :notice => 'User was successfully created.')
 		else
-			render action: 'new'
+			render :action => "new"
 		end
 	end
 
 	def update
-		if @user.update(user_params)
-			redirect_to @user, notice: "The user #{@user.username} was revised in the system."
+		@user = current_user
+		if @user.update_attributes(user_params)
+			redirect_to(@user, :notice => 'User was successfully updated.')
 		else
-			render action: 'edit'
+			render :action => "edit"
 		end
 	end
 
@@ -36,11 +40,8 @@ class UsersController < ApplicationController
 	end
 
 	private
-	def set_student
-		@user = User.find(params[:id])
-	end
 
 	def user_params
-		params.require(:user).permit(:username, :instructor_id, :role, :active)
+		params.require(:user).permit(:username, :password, :password_confirmation, :instructor_id, :role, :active)
 	end
 end

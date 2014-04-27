@@ -7,12 +7,26 @@
     <title><%= content_for?(:title) ? yield(:title) : "A&M Chess Camps" %></title>
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
-    <%# javascript_include_tag "application" %> 
+    <%= javascript_include_tag "application" %> 
     <%= csrf_meta_tags %>
   </head>
 
   <body>
     <%= render :partial => "partials/nav" %>
+    <div id="container">
+    <div id="login">
+      <!-- content once logged in goes here -->
+      <% if logged_in? %>
+      <br>Hello, <%= current_user.instructor.proper_name %> (<%= current_user.role %>) | <%= link_to 'Logout', logout_path %>
+      <% else %>
+      <%= link_to 'Sign Up', signup_path %> |
+      <%= link_to 'Login', login_path %>
+      <% end %>
+    </div>
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+    <% end %>
+  </div>
     
     <div class="row">
       <div class="small-12 columns" id="main_content">
