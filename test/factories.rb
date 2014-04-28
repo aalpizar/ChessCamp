@@ -69,12 +69,12 @@ FactoryGirl.define do
   end
 
   factory :user do
-    association :instructor
     username "mheimann"
     password "secret"
     password_confirmation "secret"
     role "admin"
     active true
+    association :instructor
   end
 
 end
