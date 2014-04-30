@@ -1,0 +1,13 @@
+<h3>Upcoming Camps:</h3>
+<table class="datagrid">
+  <thead class="datagrid">
+    <th width="90">Name</th>
+  </thead>
+
+<% for camp in @upcoming_camps %>
+  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+    <td align="left">&nbsp;<%= link_to camp.name, camp_path(camp) %></td>
+  </tr>
+<% end %>
+</table>
+<p class="supertiny">&nbsp;</p><br /><br />

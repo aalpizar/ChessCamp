@@ -12,10 +12,10 @@
 
 <% students.each do |student| %>
   <tr>
-    <td><%= link_to student.proper_name, student_path(student) %></td>
+    <td><%= link_to student.name, student_path(student) %></td>
     <td align="center"><%= student.age %></td>
     <td align="center"><%= student.date_of_birth.strftime('%m/%d/%y') %></td>
-    <td align="center"><%= student.rating %></td>
+    <td align="center"><%= student.rating == 0 ? "Unrated" : student.rating %></td>
     <td><%= link_to 'Edit', edit_student_path(student), class: "button tiny radius" %></td>
   </tr>
 <% end %>

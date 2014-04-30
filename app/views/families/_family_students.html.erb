@@ -1,0 +1,15 @@
+<% if @students %>
+<h3>Students:</h3>
+<table class="datagrid">
+  <thead class="datagrid">
+    <th width="260"> Student Name</th>
+  </thead>
+
+<% for student in @students %>
+  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+    <td align="left">&nbsp;<%= link_to student.proper_name, student_path(student) %></td>
+  </tr>
+<% end %>
+</table>
+<p class="supertiny">&nbsp;</p><br /><br />
+<% end %>

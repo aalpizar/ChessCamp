@@ -2,6 +2,9 @@
 <strong>Name:&nbsp;&nbsp;</strong> 
   <%= link_to @camp.name, curriculum_path(@camp.curriculum) %><br /><br />
 
+<strong>Location:&nbsp;&nbsp;</strong> 
+  <%= link_to @camp.location.name, location_path(@camp.location) %><br /><br />
+
 <strong>Cost:&nbsp;&nbsp;</strong> 
   <%= number_to_currency(@camp.cost) %><br /><br />
 

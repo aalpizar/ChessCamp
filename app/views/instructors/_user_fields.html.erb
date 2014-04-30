@@ -1,7 +1,8 @@
-
-    
-    <%= f.input :username %>
-    <%= f.input :role %>
-    <%= f.input :active %>
+	<%= f.input :username %>
+    <%= f.input :password %>
+    <%= f.input :password_confirmation %>
+    <%= f.input :role, collection: [['Administrator','admin'],['Instructor','instructor']], prompt: "Select role..." %>
+    <%= f.label :active %>
+    <%= f.check_box :active %>
   
 

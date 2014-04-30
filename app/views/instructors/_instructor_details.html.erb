@@ -1,18 +1,29 @@
-<h3>Instructor Details</h3><br />
-<strong>Name:&nbsp;&nbsp;</strong> 
-  <%= @instructor.proper_name %><br /><br />
+<td width="300">
+	<h1><%= @instructor.proper_name %></h1>
+	<h3>Instructor Details</h3><br />
+	
+	<b>Email:&nbsp;&nbsp;</b>
+	   <%= @instructor.email %> <br /><br />
 
-<strong>Phone:&nbsp;&nbsp;</strong> 
-  <%= number_to_phone(@instructor.phone) %><br /><br />
+	<b>Phone:&nbsp;&nbsp;</b>
+	   <%= number_to_phone(@instructor.phone) %> <br /><br />
 
-<strong>Email:&nbsp;&nbsp;</strong> 
-  <%= mail_to @instructor.email, @instructor.email, encode: "javascript" %><br /><br />
+	<b>Status:&nbsp;&nbsp;</b>
+	   <% if @instructor.active == true %> 
+          <%= "Active" %> 
+        <% else %>
+          <%= "Not Active" %> 
+        <% end %><br /><br />
 
-<strong>Active?&nbsp;&nbsp;</strong>
-  <%= @instructor.active ? "Yes" : "No" %><br /><br />
+	<% if @instructor.user %>
+		<h3> User Details </h3><br>
+		<b> Username: </b>
+		<%= @instructor.user.username %><br><br>
+		<b>Role: </b>
+		<%= @instructor.user.role.capitalize %><br><br>
+    <% end %>
 
-<strong>Biography</strong><br />
-  <%= @instructor.bio.nil? ? "N/A" : @instructor.bio %><br /><br />
+</td>
 
 
 <%= link_to "Edit this instructor", edit_instructor_path(@instructor), class: "button tiny radius" %>&nbsp;&nbsp;
