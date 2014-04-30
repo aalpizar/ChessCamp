@@ -11,13 +11,16 @@ class StudentsController < ApplicationController
 	end
 
 	def new
+		authorize! :new, @student
 		@student = Student.new
 	end
 
 	def edit
+		authorize! :update, @student
 	end
 
 	def create
+		authorize! :new, @student
 		@student = Student.new(student_params)
 		if @student.save
 			redirect_to @student, notice: "The student #{@student.proper_name} was added to the system."
@@ -27,6 +30,7 @@ class StudentsController < ApplicationController
 	end
 
 	def update
+		authorize! :update, @student
 		if @student.update(student_params)
 			redirect_to @student, notice: "The student #{@student.proper_name} was revised in the system."
 		else
@@ -35,6 +39,7 @@ class StudentsController < ApplicationController
 	end
 
 	def destroy
+		authorize! :destroy, @student
 		@student.destroy
 		redirect_to students_url, notice: "The student #{@student.proper_name} was removed from the system."
 	end

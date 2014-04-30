@@ -11,13 +11,16 @@ class FamiliesController < ApplicationController
 	end
 
 	def new
+		authorize! :new, @family
 		@family = Family.new
 	end
 
 	def edit
+		authorize! :update, @family
 	end
 
 	def create
+		authorize! :new, @family
 		@family = Family.new(family_params)
 		if @family.save
 			redirect_to @family, notice: "The #{@family.family_name} family was added to the system."
@@ -27,6 +30,7 @@ class FamiliesController < ApplicationController
 	end
 
 	def update
+		authorize! :update, @family
 		if @family.update(family_params)
 			redirect_to @family, notice: "The #{@family.family_name} family was revised in the system."
 		else
@@ -35,6 +39,7 @@ class FamiliesController < ApplicationController
 	end
 
 	def destroy
+		authorize! :destroy, @family
 		@family.destroy
 		redirect_to families_url, notice: "The #{@family.family_name} family was removed from the system."
 	end
