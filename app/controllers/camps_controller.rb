@@ -18,7 +18,6 @@ class CampsController < ApplicationController
 
   def edit
     @active_instructors = Instructor.active.alphabetical
-    @locations = Locations.active.alphabetical.to_a
   end
 
   def create

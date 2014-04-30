@@ -6,8 +6,8 @@
         <%= f.collection_select :family_id, Family.active, :id, :family_name, prompt: "Select family ..." %>
         <%= f.input :first_name %>
         <%= f.input :last_name %>
-        <%= f.input :date_of_birth, as: :date, order: [:month, :day, :year], start_year: Date.today.year - 5, end_year: Date.today.year - 30 %>
         <%= f.input :rating %>
+        <%= f.input :date_of_birth, as: :date, order: [:month, :day, :year], include_blank: true, start_year: Date.today.year - 5, end_year: Date.today.year + 30 %>
         <%= f.label :active %>
         <%= f.check_box :active %>
       </div>
