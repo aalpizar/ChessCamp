@@ -13,12 +13,10 @@ class CampsController < ApplicationController
   end
 
   def new
-    authorize! :new, @camp
     @camp = Camp.new
   end
 
   def edit
-    authorize! :update, @camp
     @active_instructors = Instructor.active.alphabetical
   end
 
@@ -33,7 +31,6 @@ class CampsController < ApplicationController
   end
 
   def update
-    authorize! :update, @camp
     if @camp.update(camp_params)
       redirect_to @camp, notice: "The camp #{@camp.name} (on #{@camp.start_date.strftime('%m/%d/%y')}) was revised in the system."
     else
@@ -42,7 +39,6 @@ class CampsController < ApplicationController
   end
 
   def destroy
-    authorize! :destroy, @camp
     @camp = Camp.find(params[:id])
     @camp.destroy
     flash[:notice] = "Successfully destroyed #{@camp.name} from the system."
