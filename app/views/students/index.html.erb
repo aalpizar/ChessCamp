@@ -1,7 +1,8 @@
 <div class="row">
   <div class="small-7 columns">
     <!-- MAIN CONTENT GOES HERE -->
-    <%= render :partial => "students", locals: { status: "Active", students: @active_students } %>
+    <%= render :partial => "students" %>
+    <%#= render :partial => "students", locals: { status: "Active", students: @active_students } %>
     <br />
     <%= link_to "Add a new student", new_student_path, class: "button tiny radius" %>
   </div>

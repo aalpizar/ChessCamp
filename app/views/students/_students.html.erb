@@ -1,4 +1,4 @@
-<h3><%= status %> Students</h3>
+<h3>Students</h3>
 
 <table class="table">
   <tr>
@@ -10,7 +10,7 @@
     <th></th>
   </tr>
 
-<% students.each do |student| %>
+<% @active_students.each do |student| %>
   <tr>
     <td><%= link_to student.name, student_path(student) %></td>
     <td align="center"><%= student.age %></td>
@@ -22,5 +22,5 @@
 </table>
 <!-- Add the pagination using will_paginate gem -->
 <span class="paginate">
-<%= will_paginate students, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+<%= will_paginate @active_students, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
 </span>
