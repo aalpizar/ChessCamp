@@ -1,4 +1,4 @@
-<h3>Camp Details</h3><br />
+<h3><%= @camp.name %> Camp Details</h3><br />
 <strong>Name:&nbsp;&nbsp;</strong> 
   <%= link_to @camp.name, curriculum_path(@camp.curriculum) %><br /><br />
 
@@ -21,7 +21,7 @@
 <strong>Time:&nbsp;&nbsp;</strong> 
   <%= @camp.time_slot == "am" ? "Morning" : "Afternoon" %><br /><br />
 
-<strong>Active?&nbsp;&nbsp;</strong>
+<strong>Active:&nbsp;&nbsp;</strong>
   <%= @camp.active ? "Yes" : "No" %><br /><br />
 
 

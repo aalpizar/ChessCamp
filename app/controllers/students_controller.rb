@@ -8,6 +8,7 @@ class StudentsController < ApplicationController
 
 	def show
 		@camps = @student.camps.alphabetical.to_a
+		@registrations = @student.registrations.to_a
 	end
 
 	def new
