@@ -26,7 +26,7 @@ class CampsController < ApplicationController
     authorize! :new, @camp
     @camp = Camp.new(camp_params)
     if @camp.save
-      flash[:notice] = "#{@camp.name} was revised in the system"
+      flash[:notice] = "#{@camp.name} Camp was added to the system"
       redirect_to @camp
     else
       render action: 'new'
