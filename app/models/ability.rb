@@ -4,7 +4,7 @@ class Ability
   def initialize(user)
 
     user ||= User.new
-    
+  
     if user.role? :admin
         can :manage, :all
     elsif user.role? :instructor
@@ -14,6 +14,7 @@ class Ability
         can :destroy, Instructor do |instructor|  
           instructor.id == user.instructor_id
         end
+        # can :show, :students, :student_id => user.instructor.camps.registratio
     else
         can :read, :all
     end
