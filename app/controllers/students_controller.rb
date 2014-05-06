@@ -7,7 +7,7 @@ class StudentsController < ApplicationController
 	end
 
 	def show
-		# authorize! :show, @student
+		authorize! :read, @student
 		@camps = @student.camps.alphabetical.to_a
 		@registrations = @student.registrations.to_a
 	end

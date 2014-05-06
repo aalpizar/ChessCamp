@@ -14,7 +14,10 @@ class Ability
         can :destroy, Instructor do |instructor|  
           instructor.id == user.instructor_id
         end
-        # can :show, :students, :student_id => user.instructor.camps.registratio
+        can :read, Student do |this_student|  
+          students = user.instructor.camps.map{|p| p.students.map(&:id)}.flatten
+          students.include? this_student.id 
+        end
     else
         can :read, :all
     end

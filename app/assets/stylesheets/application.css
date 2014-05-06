@@ -13,3 +13,54 @@
 
  *= require_tree .
  */
+
+* {font-family: 'Roboto', sans-serif;}
+
+ div#home {
+ 	height: 70% ;
+ 	width: 100%;
+ 	background-image:url('cover.jpg');
+ 	background-position: right center;
+ }
+
+ div.home {
+ 	margin-top: 55%;
+ }
+
+ 
+ table.header{
+ 	border: none;
+ 	margin-bottom: -10px;
+ }
+
+
+ .descript {
+ 	width: auto;
+ 	height: auto;
+ }   
+
+
+ .picture {
+ 	height: 400px;
+ 	width: 300px;
+ 	border-color: black;
+ 	border: 3px solid;
+ }
+
+/*.columns {
+	padding-bottom: 75px;
+}*/
+
+
+.social {
+ border: none
+}
+
+div#login {
+	float: right;
+	margin-right: 25%;
+	margin-bottom: 15%;
+}
+
+
+

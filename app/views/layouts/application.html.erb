@@ -9,28 +9,22 @@
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag "application" %> 
     <%= csrf_meta_tags %>
+    <!-- <link href='http://fonts.googleapis.com/css?family=Gilda+Display|Source+Code+Pro|Cardo' rel='stylesheet' type='text/css'> -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
   </head>
 
   <body>
+    <% if request.path_parameters == {:action => 'index', :controller => 'home'} %>
+     <div class="contain-to-grid" id="home">
+        <% end %>
     <%= render :partial => "partials/nav" %>
     <div id="container">
-    <div id="login">
-      <!-- content once logged in goes here -->
-      <% if logged_in? %>
-      <br>Hello, <%= current_user.instructor.proper_name %> (<%= current_user.role %>) | <%= link_to 'Logout', logout_path %>
-      <% else %>
-      <%= link_to 'Sign Up', signup_path %> |
-      <%= link_to 'Login', login_path %>
-      <% end %>
-    </div>
   </div>
     
     <div class="row">
-      <div class="small-12 columns" id="main_content">
         <%= render :partial => "partials/flash" %>
         <%= yield %>
-      </div>
-    </div>
+  </div>
     <footer>
       <div class="row">
         <div class="small-12 columns" id="footer">
