@@ -5,8 +5,11 @@
         <h3><%= controller.action_name.capitalize %> Registration</h3>
         <%= f.collection_select :camp_id, Camp.active.chronological, :id, :name, prompt: "Select Camp..." %>
         <%= f.collection_select :student_id, Student.active.alphabetical, :id, :proper_name, prompt: "Select Student..." %>
-        <%= f.collection_select :payment_status, [['Deposit','deposit'],['Full','full']], prompt: "Select Payment..." %>
-        <%= f.input :points_earned %>
+        <%= f.input :payment_status, collection: [['Deposit','deposit'],['Full','full']], prompt: "Select Payment..." %>
+        <% if current_page?(:controller => 'registrations', :action => 'new') %>
+        <% else %>
+          <%= f.input :points_earned %>
+        <%end %> 
       </div>
       <div class="small-1 columns">&nbsp;</div>
     </div>

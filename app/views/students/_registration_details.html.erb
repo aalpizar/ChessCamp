@@ -5,12 +5,16 @@
   <tr>
     <th width="260">Camp</th>
     <th width="120">Date</th>
+    <th width="260"> Points Earned </th>
+    <th> </th>
   </tr>
 
 <% @registrations.each do |registration| %>
   <tr>
     <td><%= link_to registration.camp.name, camp_path(registration.camp) %></td>
     <td align="center"><%= registration.camp.start_date.strftime('%m/%d/%y') %> </td>
+    <td align="center"><%= registration.points_earned %> </td>
+    <td> <%= link_to "Edit", edit_registration_path(registration), class: "button tiny radius" %></td>
   </tr>
 <% end %>
 </table>

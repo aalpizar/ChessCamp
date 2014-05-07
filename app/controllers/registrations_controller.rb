@@ -21,7 +21,7 @@ class RegistrationsController < ApplicationController
 		authorize! :new, @registration
 		@registration = Registration.new(registration_params)
 		if @registration.save
-			redirect_to @registration, notice: "#{@registration.student.name} was registered for #{@registration.camp.name} Camp."
+			redirect_to student_path(@registration.student), notice: "#{@registration.student.name} was registered for #{@registration.camp.name} Camp."
 		else
 			redirect_to home_path, warning: "#{@registration.student.name} was not registered for #{@registration.camp.name} Camp."
 			# render action: 'new'
@@ -31,7 +31,7 @@ class RegistrationsController < ApplicationController
 	def update
 		authorize! :update, @registration
 		if @registration.update(registration_params)
-			redirect_to @registration, notice: "The registration was revised in the system."
+			redirect_to student_path(@registration.student), notice: "#{@registration.student.name}'s registeration for #{@registration.camp.name} Camp was revised in the system."
 		else
 			render action: 'edit'
 		end
