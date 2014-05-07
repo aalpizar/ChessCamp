@@ -14,6 +14,7 @@ class FamiliesController < ApplicationController
 	def new
 		authorize! :new, @family
 		@family = Family.new
+		@students = @family.students.build
 	end
 
 	def edit
@@ -22,7 +23,9 @@ class FamiliesController < ApplicationController
 
 	def create
 		authorize! :new, @family
+		# @family.students.build if @family.students.nil? 
 		@family = Family.new(family_params)
+		# @family.students.each.family_id = @family.id
 		if @family.save
 			redirect_to @family, notice: "The #{@family.family_name} family was added to the system."
 		else
@@ -51,6 +54,6 @@ class FamiliesController < ApplicationController
 	end
 
 	def family_params
-		params.require(:family).permit(:family_name, :parent_first_name, :email, :phone, :active)
+		params.require(:family).permit(:id, :family_name, :parent_first_name, :email, :phone, :active, students_attributes: [:id, :first_name, :last_name, :date_of_birth, :rating, :active])
 	end
 end

@@ -1,21 +1,33 @@
-<%= simple_form_for(@family, html: { class: 'form-horizontal' }) do |f| %>
-       
+<%= simple_nested_form_for @family, :html => { :class => 'form-horizontal' } do |family_form| %>
+    <div class="small-5 columns">
     <div class="row">
-      <div class="small-6 columns">
-        <h3><%= controller.action_name.capitalize %> Family</h3>
-        <%= f.input :family_name %>
-        <%= f.input :parent_first_name %>
-        <%= f.input :email %>
-        <%= f.input :phone %>
-        <%= f.label :active %>
-        <%= f.check_box :active %>
+      <div class="span7">
+        <fieldset>
+          <legend><%= controller.action_name.capitalize %> Family</legend>
+          <%= render :partial => "family_fields", :locals => { :f => family_form } %>
+        </fieldset>
       </div>
-      <div class="small-1 columns">&nbsp;</div>
     </div>
+  </div>
 
+    <div class="small-6 columns">
+      <div class="row">
+        <div class="span5">
+           <fieldset>
+            <legend>Students for this family</legend>
+        <div id="family_students">  
+          <%= family_form.simple_fields_for :students do |student_form| %>
+            <%= render "student_details", :f => student_form %>
+          <% end %> 
+        </fieldset>
+          <%= family_form.link_to_add("Add More Students", :students, :class => 'button tiny') %>
+        </div> 
+        <%# end %>
+      </div>
+    </div>
+  </div>
     <div class="form-actions">
-      <%= f.submit nil, class: 'button radius' %>
-      <%= link_to 'Back to list of families', families_path, :class => 'button secondary radius' %>
+      <%= family_form.submit nil, :class => 'button radius' %>
+      <%= link_to 'Cancel', families_path, :class => 'button secondary' %>
     </div>
-
-<% end %>
+  <% end %>

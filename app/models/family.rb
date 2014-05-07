@@ -10,6 +10,8 @@ class Family < ActiveRecord::Base
   scope :active, -> { where(active: true) }
   scope :inactive, -> { where(active: false) }
 
+  accepts_nested_attributes_for :students, reject_if: lambda { |student| student[:first_name].blank? }
+
   # validations
   validates_presence_of :family_name, :phone
   validates_format_of :phone, with: /\A(\d{10}|\(?\d{3}\)?[-. ]\d{3}[-.]\d{4})\z/, message: "should be 10 digits (area code needed) and delimited with dashes only"
