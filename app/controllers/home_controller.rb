@@ -15,7 +15,7 @@ class HomeController < ApplicationController
   	
   	@active_curriculums = Curriculum.active.size
   	@inactive_curriculums = Curriculum.inactive.size
-  	@all_ciurriculums = Curriculum.all.size
+  	@all_curriculums = Curriculum.all.size
   	
   	@active_students = Student.active.size
   	@inactive_students = Student.inactive.size

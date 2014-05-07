@@ -1,6 +1,10 @@
 <h3><%= @camp.name %> Camp Details</h3><br />
 <strong>Name:&nbsp;&nbsp;</strong> 
+  <% if can? :read, Curriculum %>
   <%= link_to @camp.name, curriculum_path(@camp.curriculum) %><br /><br />
+  <% else %>
+   <%= @camp.name %><br /><br />
+   <% end %>
 
 <strong>Location:&nbsp;&nbsp;</strong> 
   <%= link_to @camp.location.name, location_path(@camp.location) %><br /><br />

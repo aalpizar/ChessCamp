@@ -23,6 +23,10 @@
     </div>
     <div class="form-actions">
       <%= instructor_form.submit nil, :class => 'button radius' %>
+      <% if can? :read, Instructor %>
       <%= link_to 'Cancel', instructors_path, :class => 'button secondary' %>
+      <% else %>
+      <%= link_to 'Cancel', instructor_path(@instructor), :class => 'button secondary' %>
+      <% end %>
     </div>
   <% end %>
