@@ -3,7 +3,7 @@
     <div class="row">
       <div class="small-6 columns">
         <h3><%= controller.action_name.capitalize %> Student</h3>
-        <%= f.collection_select :family_id, Family.active, :id, :family_name, prompt: "Select family ..." %>
+        <%= f.collection_select :family_id, Family.active.alphabetical, :id, :family_name, prompt: "Select family ..." %>
         <%= f.input :first_name %>
         <%= f.input :last_name %>
         <%= f.input :rating %>

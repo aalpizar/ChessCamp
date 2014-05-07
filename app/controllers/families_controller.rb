@@ -42,7 +42,7 @@ class FamiliesController < ApplicationController
 	def destroy
 		authorize! :destroy, @family
 		@family.destroy
-		redirect_to families_url, notice: "The #{@family.family_name} family was removed from the system."
+		redirect_to families_url, warning: "The #{@family.family_name} family was not removed from the system."
 	end
 
 	private
