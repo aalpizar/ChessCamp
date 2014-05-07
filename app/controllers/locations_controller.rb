@@ -41,7 +41,12 @@ class LocationsController < ApplicationController
 	def destroy
 		authorize! :destroy, @location
 		@location.destroy
-		redirect_to locations_url, notice: "The #{@location.name} location was removed from the system."
+    	if @location.destroy
+      		flash[:notice] = "The location was removed from the system."
+    	else
+      		flash[:warning] = "Unable to remove location from the system."
+    	end
+    	redirect_to locations_url
 	end
 
 	private

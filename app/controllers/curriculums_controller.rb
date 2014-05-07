@@ -45,7 +45,7 @@ class CurriculumsController < ApplicationController
   def destroy
     authorize! :destroy, @curriculum
     @curriculum.destroy
-    redirect_to curriculums_url, notice: "#{@curriculum.name} was removed from the system."
+    redirect_to curriculums_url, warning: "Unable to remove #{@curriculum.name} curriculum from the system."
   end
 
   private
