@@ -1,0 +1,102 @@
+<h2> Hello, <%= current_user.instructor.proper_name %>! </h2><br><br>
+
+<div class="small-7 columns">
+
+<fieldset>
+<h3>Upcoming Camps</h3>
+
+<table class="table">
+  <tr>
+    <th width="500">Name</th>
+    <th width="120">Date</th>
+    <th width="120">Time</th>
+    <th width="120">Enrolled </th>
+    <th width="400">Instructors </th>
+    <th></th>
+  </tr>
+
+<% @upcoming_camps.each do |camp| %>
+  <tr>
+    <td><%= link_to camp.name, camp_path(camp) %></td>
+    <td align="center"><%= camp.start_date.strftime('%m/%d/%y') %></td>
+    <td align="center"><%= camp.time_slot == "am" ? "Morning" : "Afternoon" %></td>
+    <td align="center"><%= camp.registrations.size %></td>
+    <td> <% camp.instructors.each do |instructor| %>
+   		<%= link_to instructor.proper_name, instructor_path(instructor) %> <br>
+   		<% end %>
+    </td>
+    <td><%= link_to 'Edit', edit_camp_path(camp), class: "button tiny radius" %></td>
+  </tr>
+<% end %>
+</table>
+<!-- Add the pagination using will_paginate gem -->
+<span class="paginate">
+<%= will_paginate @upcoming_camps, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+</span>
+
+</fieldset>
+
+<fieldset>
+	<h3> Active Instructors </h3>
+
+<table class="table">
+  <tr>
+    <th width="400">Name</th>
+    <th width="500">Assigned Camps</th>
+    <th></th>
+  </tr>
+
+<% @active_instructors.each do |instructor| %>
+<tr>
+	<td><%= link_to instructor.name, instructor_path(instructor) %></td>
+	<td><% instructor.camps.each do |camp| %>
+        <%= link_to camp.name, camp_path(camp) %><br>
+      <% end %></td>
+    <td> <%= link_to 'Edit', edit_instructor_path(instructor), class: "button tiny radius" %></td>
+</tr>
+<% end %>
+</table>
+<span class="paginate">
+<%= will_paginate @active_instructors, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+</span>
+
+</fieldset>
+</div>
+
+<div class="small-5 columns">
+	<fieldset>
+		<h3> Current Stats </h3>
+		<table class="stats">
+		<tr>
+			<td><h4><%= link_to "Camps", camps_path %></h4></td>
+			<td>Active (<%= @active_camps %>) <br> Inactive (<%= @inactive_camps %>) <br> All (<%= @all_camps %>)</td>
+		</tr>
+		<tr>
+			<td><h4><%= link_to "Instructors", instructors_path %></h4></td>
+			<td>Active (<%= @active_instructors.size %>) <br> Inactive (<%= @inactive_instructors %>) <br> All (<%= @all_instructors %>)</td>
+		</tr>
+		<tr>
+			<td><h4><%= link_to "Locations", locations_path %></h4></td>
+			<td>Active (<%= @active_locations %>) <br> Inactive (<%= @inactive_locations %>) <br> All (<%= @all_locations %>)</td>
+		</tr>
+		<tr>
+			<td><h4><%= link_to "Curriculums", curriculums_path %></h4></td>
+			<td>Active (<%= @active_curriculums %>) <br> Inactive (<%= @inactive_curriculums %>) <br> All (<%= @all_curriculums %>)</td>
+		</tr>
+		<tr>
+			<td><h4><%= link_to "Students", students_path %></h4></td>
+			<td>Active (<%= @active_students %>) <br> Inactive (<%= @inactive_students %>) <br> All (<%= @all_students %>)</td>
+		</tr>
+		
+		</table>
+
+	</fieldset>
+
+	<fieldset>
+		<h3> Generate Reports </h3>
+	</fieldset>
+	</div>
+
+
+
+

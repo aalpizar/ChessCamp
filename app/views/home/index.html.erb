@@ -1,35 +1,9 @@
-<div class="home">
-<div class="small-7 columns">
-	<h1>Welcome Chess Players!</h1>
-
-	<p>Interested in learning more about chess and making new friends this summer? </p>
-	<p> A&M Chess Camp is much like other types of camps that are offered (rowing camp, art camp, basketball camp and the like). Students come in for a three-hour period – either a morning session from 9:00am to 12:00pm or an afternoon session from 1:00pm to 4:00pm – every day during the course of one week. </p>
-
-	<p>During that time, students receive instruction in a particular aspect of chess and get an opportunity to play games against fellow campers. Performance on class exercises and in games gives students points that lead to trophies and ribbons at the end of the week. </p>
-
-	<h4><center>Registration begins June, 1st 2014! </center> </h4>
-</div>
-
-<div class="small-4 columns"> <br>
-	
-		<ul> <h4> Upcoming Events: </h4>
-			<li>April 1 - Registration</li>
-			<li>May 5 - 2014 Chess Championship </li>
-			<li>June 4 - 21st Annual Pittsburgh Championship </li>
-		</ul>
-		<ul><h4>News & Articles: </h4>
-			<li> <a href ="http://triblive.com/x/pittsburghtrib/news/pittsburgh/s_454281.html#axzz2xIEHMmd0"> Twins Hope to be Kings of Chess </a></li>
-			<li> <a href="http://www.studlife.com/scene/profile/2014/02/27/a-man-of-many-talents-mark-heimanns-intensive-quest-to-conquer-everything-wash-u-has-to-offer/"> Quest to Chess Success </a> </li>
-			<li> <a href="https://www.chesshouse.com/chess_makes_kids_smarter_a/109.htm"> Chess Makes Kids Smarter </a></li></ul>
-			
-		<table class="social">
-			<tr>
-			<td><%= link_to(image_tag("facebook500.png", size: "50x50"), "https://www.facebook.com/appcenter/chessfb?fb_source=search&fbsid=1101") %></td>
-			<td><%= link_to(image_tag("instagram.png", size: "50x50"), "http://instagram.com/chessislifeorg") %></td>
-			<td><%= link_to(image_tag("twitter.png", size: "50x50"), "https://twitter.com/chesscom") %></td>
-			<td><%= link_to(image_tag("youtube.png", size: "50x50"), "https://www.youtube.com/user/ChessNetwork") %></td>
-			</tr>
-		</table>
-</div>
-</div>
-
+<% if logged_in? %>
+<% if current_user.role? :admin %>
+	<%= render :partial => 'admin_home' %>
+<% else %>
+	<%= render :partial => 'instructor_home' %>
+	<% end %>
+<% else %>
+	<%= render :partial => 'general_home' %>
+<% end %>

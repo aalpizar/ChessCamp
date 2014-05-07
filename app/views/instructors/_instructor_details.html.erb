@@ -1,10 +1,22 @@
+<div class="small-10 columns">
 <td width="300">
 	<h1><%= @instructor.proper_name %></h1>
 	<h3>Instructor Details</h3><br />
 
-	<% unless @instructor.picture_url.nil? %>
-    	<div class="photo"><%= image_tag @instructor.picture_url %></div>
+	<% if @instructor.proper_name == "Alex Heimann" %>
+		<%= image_tag 'alex.png', class: "picture" %>
+	<% elsif @instructor.proper_name == "Mark Heimann" %>
+		<%= image_tag 'mark.png', class: "picture" %>
+	<% elsif @instructor.picture_url.nil? %>
+		<%= image_tag 'instructor.png', class: "picture" %>
+	<% else %>
+    	<%= image_tag @instructor.picture_url, class: "picture" %>
 	<% end %>
+
+	<br><br>
+	<% unless @instructor.bio.empty? %>
+		 <p><em>" <%= @instructor.bio %> "</em><br></p>
+	<% end %></center>
 	
 	<b>Email:&nbsp;&nbsp;</b>
 	   <%= @instructor.email %> <br /><br />
@@ -19,10 +31,7 @@
           <%= "Not Active" %> 
         <% end %><br /><br />
 
-    <b>Bio:&nbsp;&nbsp;</b>
-	   <%= @instructor.bio %> <br /><br />
-
-	<% if @instructor.user %>
+     <% if @instructor.user %>
 		<h3> User Details </h3><br>
 		<b> Username: </b>
 		<%= @instructor.user.username %><br><br>
@@ -30,7 +39,8 @@
 		<%= @instructor.user.role %><br><br>
     <% end %>
 
+	  <%= link_to "Edit", edit_instructor_path(@instructor) %> |
+	   <%= link_to "Delete", @instructor, method: :delete, data: { confirm: 'Are you sure you wish to delete this information?' } %> |
+ 	  <%= link_to "View All", instructors_path %>
 </td>
-
-
-<%= link_to "Edit this instructor", edit_instructor_path(@instructor), class: "button tiny radius" %>&nbsp;&nbsp;
+</div>
