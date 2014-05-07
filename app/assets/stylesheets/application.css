@@ -62,5 +62,10 @@ div#login {
 	margin-bottom: 15%;
 }
 
+div.photo {
+	height: 100px;
+	width: 100px;
+}
+
 
 

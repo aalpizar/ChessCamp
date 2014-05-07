@@ -1,6 +1,10 @@
 <td width="300">
 	<h1><%= @instructor.proper_name %></h1>
 	<h3>Instructor Details</h3><br />
+
+	<% unless @instructor.picture_url.nil? %>
+    	<div class="photo"><%= image_tag @instructor.picture_url %></div>
+	<% end %>
 	
 	<b>Email:&nbsp;&nbsp;</b>
 	   <%= @instructor.email %> <br /><br />
