@@ -16,7 +16,9 @@
 
     <div class="form-actions">
       <%= f.submit nil, class: 'button radius' %>
+       <% if can? :read, Student %>
       <%= link_to 'Back to list of students', students_path, :class => 'button secondary radius' %>
+      <% end %>
     </div>
 
 <% end %>

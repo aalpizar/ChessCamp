@@ -20,6 +20,8 @@ class Ability
         end
     else
         can :read, Camp
+        can :read, Location
+        can :read, Instructor
     end
 
     # Define abilities for the passed in user here. For example:

@@ -30,6 +30,7 @@ class CampsController < ApplicationController
       flash[:notice] = "#{@camp.name} Camp was added to the system"
       redirect_to @camp
     else
+      flash[:warning] = "Unable to add camp to the system"
       render action: 'new'
     end
   end
@@ -39,6 +40,7 @@ class CampsController < ApplicationController
     if @camp.update(camp_params)
       redirect_to @camp, notice: "The camp #{@camp.name} was revised in the system."
     else
+      flash[:warning] = "The camp #{@camp.name} was not revised in the system."
       render action: 'edit'
     end
   end

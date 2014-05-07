@@ -3,7 +3,8 @@
 <table class="table">
   <tr>
     <th width="200">Name</th>
-    <th width="200">Phone</th>
+     <% if can? :update, Instructor %>
+    <th width="200">Phone</th>  <% end %>
     <th width="100">Camps</th>
     <th></th>
     <th></th>
@@ -12,9 +13,11 @@
 <% @active_instructors.each do |instructor| %>
   <tr>
     <td><%= link_to instructor.name, instructor_path(instructor) %></td>
-    <td align="center"><%= number_to_phone instructor.phone %></td>
+     <% if can? :update, Instructor%><td align="center"><%= number_to_phone instructor.phone %></td><% end %>
     <td align="center"><%= instructor.camps.size %></td>
+     <% if can? :update, Instructor %>
     <td><%= link_to 'Edit', edit_instructor_path(instructor), class: "button tiny radius" %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>

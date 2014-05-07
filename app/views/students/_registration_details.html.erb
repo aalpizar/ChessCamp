@@ -14,7 +14,8 @@
     <td><%= link_to registration.camp.name, camp_path(registration.camp) %></td>
     <td align="center"><%= registration.camp.start_date.strftime('%m/%d/%y') %> </td>
     <td align="center"><%= registration.points_earned %> </td>
-    <td> <%= link_to "Edit", edit_registration_path(registration), class: "button tiny radius" %></td>
+    <% if can? :update, Registration %>
+    <td> <%= link_to "Edit", edit_registration_path(registration), class: "button tiny radius" %></td><% end %>
   </tr>
 <% end %>
 </table>

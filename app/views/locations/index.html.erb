@@ -3,7 +3,9 @@
     <!-- MAIN CONTENT GOES HERE -->
     <%= render :partial => "locations", locals: { status: "Active", locations: @active_locations } %>
     <br />
+     <% if can? :update, Location %>
     <%= link_to "Add a new location", new_location_path, class: "button tiny radius" %>
+     <% end %>
   </div>
 
   <div class="small-1 columns">

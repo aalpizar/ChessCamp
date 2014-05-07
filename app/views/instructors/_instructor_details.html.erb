@@ -18,6 +18,7 @@
 		 <p><em>" <%= @instructor.bio %> "</em><br></p>
 	<% end %></center>
 	
+	 <% if can? :update, Instructor %>
 	<b>Email:&nbsp;&nbsp;</b>
 	   <%= @instructor.email %> <br /><br />
 
@@ -41,6 +42,6 @@
 
 	  <%= link_to "Edit", edit_instructor_path(@instructor) %> |
 	   <%= link_to "Delete", @instructor, method: :delete, data: { confirm: 'Are you sure you wish to delete this information?' } %> |
- 	  <%= link_to "View All", instructors_path %>
+ 	  <% end %>
 </td>
 </div>

@@ -7,7 +7,9 @@
     <th width="120">City</th>
     <th width="120">State</th>
     <th width="120">Zip</th>
+     <% if can? :update, Location %>
     <th width="120">Max Capacity</th>
+    <% end %>
     <th></th>
     <th></th>
   </tr>
@@ -19,8 +21,10 @@
     <td align="center"><%= location.city %></td>
     <td align="center"><%= location.state %></td>
     <td align="center"><%= location.zip %> </td>
+     <% if can? :update, Location %>
     <td align="center"><%= location.max_capacity %></td>
     <td><%= link_to 'Edit', edit_location_path(location), class: "button tiny radius" %></td>
+    <%end %>
   </tr>
 <% end %>
 </table>

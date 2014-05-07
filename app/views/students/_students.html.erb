@@ -16,7 +16,9 @@
     <td align="center"><%= student.age %></td>
     <td align="center"><%= student.date_of_birth.strftime('%m/%d/%y') %></td>
     <td align="center"><%= student.rating == 0 ? "Unrated" : student.rating %></td>
+    <% if can? :update, Student %>
     <td><%= link_to 'Edit', edit_student_path(student), class: "button tiny radius" %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>

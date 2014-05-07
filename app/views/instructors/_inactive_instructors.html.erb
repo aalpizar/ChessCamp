@@ -1,3 +1,4 @@
+ <% if can? :update, Instructor %>
 <% unless @inactive_instructors.empty? %>
   <h3>&nbsp;</h3>
   <div class="panel clearfix">
@@ -8,4 +9,5 @@
       <% end %>
     </ul>
   </div>
+<% end %>
 <% end %>

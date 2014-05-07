@@ -8,13 +8,14 @@ class RegistrationsController < ApplicationController
 	end
 
 	def new
+		authorize! :new, @registration
 		@registration = Registration.new
 		# @camps = Camp.active.alphabetical.to_a
 		# @students = Student.active.alphabetical.to_a
 	end
 
 	def edit
-		# authorize! :update, @location
+		# authorize! :update, @registratin
 	end
 
 	def create

@@ -18,6 +18,7 @@
   <%= @student.active ? "Yes" : "No" %><br /><br />
 
 
-
+ <% if can? :update, Student %>
 <%= link_to "Edit this student", edit_student_path(@student), class: "button tiny radius" %>&nbsp;&nbsp;
 <%= link_to 'Destroy student', camp_path(@student), data: { confirm: 'Are you sure you want to permanently remove this student from the system?' }, method: :delete, class: "button tiny radius alert" %>
+<% end %>

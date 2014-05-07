@@ -23,6 +23,8 @@
 
 <div class="small-4 columns"></div>
 
+<% if can? :update, Instructor%>
 <div class="small-6 columns">
   <h3>Don't have an account? </h3>
 <p>Click the following link to <%= link_to "Sign Up", signup_path %>.</p></div>
+<% end %>
