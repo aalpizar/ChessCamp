@@ -51,11 +51,11 @@
 // $default-float: left;
 
 // We use these as default colors throughout
-// $primary-color: #008CBA;
+// $primary-color: #FFF;
 // $secondary-color: #e7e7e7;
-// $alert-color: #f04124;
+$alert-color: #f04124;
 $success-color: #B5EBC9;
-// $warning-color: #f08a24;
+$warning-color: #C43E3D;
 // $info-color: #a0d3e8;
 
 // We use these to make sure border radius matches unless we want it different.
@@ -240,7 +240,7 @@ $success-color: #B5EBC9;
 // We use these to control text style.
 // $alert-font-weight: normal;
 // $alert-font-size: rem-calc(13);
-$alert-font-color: #43AC6A;
+$alert-font-color: #FFF;
 // $alert-font-color-alt: scale-color($secondary-color, $lightness: -66%);
 
 // We use this for close hover effect.

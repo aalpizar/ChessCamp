@@ -3,6 +3,7 @@ class InstructorsController < ApplicationController
   before_action :set_instructor, only: [:show, :edit, :update, :destroy]
 
   def index
+    authorize! :read, @instructor
     @active_instructors = Instructor.active.alphabetical.paginate(:page => params[:page]).per_page(10)
     @inactive_instructors = Instructor.inactive.alphabetical.paginate(:page => params[:page]).per_page(10)
   end

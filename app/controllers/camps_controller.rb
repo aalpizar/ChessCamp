@@ -47,8 +47,13 @@ class CampsController < ApplicationController
     authorize! :destroy, @camp
     @camp = Camp.find(params[:id])
     @camp.destroy
-    flash[:notice] = "Successfully destroyed #{@camp.name} from the system."
+    if @camp.destroy
+      flash[:notice] = "Successfully destroyed #{@camp.name} from the system."
+    else
+      flash[:warning] = "#{@camp.name} has registrations and was not removed from the system."
+    end
     redirect_to camps_url
+
   end
 
   private

@@ -19,7 +19,7 @@ class Ability
           students.include? this_student.id 
         end
     else
-        can :read, :all
+        can :read, Camp
     end
 
     # Define abilities for the passed in user here. For example:

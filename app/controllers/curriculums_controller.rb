@@ -2,11 +2,13 @@ class CurriculumsController < ApplicationController
   before_action :set_curriculum, only: [:show, :edit, :update, :destroy]
 
   def index
+    authorize! :read, @curriculum
     @active_curriculums = Curriculum.active.alphabetical.paginate(:page => params[:page]).per_page(10)
     @inactive_curriculums = Curriculum.inactive.alphabetical.paginate(:page => params[:page]).per_page(10)
   end
 
   def show
+    authorize! :read, @curriculum
     @camps = @curriculum.camps.chronological.to_a
   end
 
