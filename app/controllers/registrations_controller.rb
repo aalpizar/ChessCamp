@@ -8,8 +8,9 @@ class RegistrationsController < ApplicationController
 	end
 
 	def new
-		@camps = Camp.active.alphabetical.to_a
-		@students = Student.active.alphabetical.to_a
+		@registration = Registration.new
+		# @camps = Camp.active.alphabetical.to_a
+		# @students = Student.active.alphabetical.to_a
 	end
 
 	def edit
@@ -22,7 +23,8 @@ class RegistrationsController < ApplicationController
 		if @registration.save
 			redirect_to @registration, notice: "#{@registration.student.name} was registered for #{@registration.camp.name} Camp."
 		else
-			render action: 'new'
+			redirect_to home_path, warning: "#{@registration.student.name} was not registered for #{@registration.camp.name} Camp."
+			# render action: 'new'
 		end
 	end
 
@@ -42,7 +44,7 @@ class RegistrationsController < ApplicationController
 	end
 
 	private
-	def set_location
+	def set_registration
 		@registration = Registration.find(params[:id])
 	end
 

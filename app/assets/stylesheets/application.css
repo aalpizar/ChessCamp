@@ -21,10 +21,7 @@
  	width: 100%;
  	background-image:url('cover.jpg');
  	background-position: right center;
- }
-
- div.home {
- 	margin-top: 55%;
+ 	margin-bottom: 5%;
  }
 
  
@@ -67,5 +64,8 @@ div.photo {
 	width: 100px;
 }
 
+nav {
+	width: 100%;
+}
 
 

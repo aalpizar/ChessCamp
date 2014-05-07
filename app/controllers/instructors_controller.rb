@@ -48,7 +48,7 @@ class InstructorsController < ApplicationController
   def destroy
     authorize! :destroy, @instructor
     @instructor.destroy
-    redirect_to instructors_url, notice: "#{@instructor.proper_name} was removed from the system."
+    redirect_to instructors_url, warning: "#{@instructor.proper_name} was not removed from the system."
   end
 
   private

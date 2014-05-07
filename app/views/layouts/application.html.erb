@@ -15,10 +15,9 @@
 
   <body>
     <% if request.path_parameters == {:action => 'index', :controller => 'home'} %>
-     <div class="contain-to-grid" id="home">
+     <div id="home">
         <% end %>
     <%= render :partial => "partials/nav" %>
-    <div id="container">
   </div>
     
     <div class="row">

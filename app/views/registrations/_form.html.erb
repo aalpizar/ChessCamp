@@ -3,9 +3,9 @@
     <div class="row">
       <div class="small-6 columns">
         <h3><%= controller.action_name.capitalize %> Registration</h3>
-        <%= f.collection_select :camp_id, Camp.active, :id, :name, prompt: "Select Camp..." %>
-        <%= f.collection_select :student_id, Student.active, :id, :proper_name, prompt: "Select student..." %>
-        <%= f.input :payment_status %>
+        <%= f.collection_select :camp_id, Camp.active.chronological, :id, :name, prompt: "Select Camp..." %>
+        <%= f.collection_select :student_id, Student.active.alphabetical, :id, :proper_name, prompt: "Select Student..." %>
+        <%= f.collection_select :payment_status, [['Deposit','deposit'],['Full','full']], prompt: "Select Payment..." %>
         <%= f.input :points_earned %>
       </div>
       <div class="small-1 columns">&nbsp;</div>
