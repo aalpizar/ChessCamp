@@ -24,8 +24,8 @@ class RegistrationsController < ApplicationController
 		if @registration.save
 			redirect_to student_path(@registration.student), notice: "#{@registration.student.name} was registered for #{@registration.camp.name} Camp."
 		else
-			redirect_to home_path, warning: "#{@registration.student.name} was not registered for #{@registration.camp.name} Camp."
-			# render action: 'new'
+			flash[:warning] = "Unable to register student to camp."
+			render action: 'new'
 		end
 	end
 
