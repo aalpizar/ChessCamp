@@ -16,7 +16,7 @@
      <% if can? :update, Instructor%><td align="center"><%= number_to_phone instructor.phone %></td><% end %>
     <td align="center"><%= instructor.camps.size %></td>
      <% if can? :update, Instructor %>
-    <td><%= link_to 'Edit', edit_instructor_path(instructor), class: "button tiny radius" %></td>
+    <td><%= link_to(image_tag('edit.png'), edit_instructor_path(instructor)) %></td>
     <% end %>
   </tr>
 <% end %>

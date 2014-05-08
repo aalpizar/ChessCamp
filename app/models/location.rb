@@ -25,7 +25,7 @@ class Location < ActiveRecord::Base
         marker = "&markers=color:red%7Ccolor:red%7Clabel:#{1}%7C#{self.latitude},#{self.longitude}"
         puts marker
         map = "http://maps.google.com/maps/api/staticmap?center= #{latitude},#{longitude}&zoom=#{zoom}&size=#{width}x#{height}&maptype=roadmap#{marker}&sensor=false"
-    end
+  end
 
   private
   def verify_that_never_used_for_camps

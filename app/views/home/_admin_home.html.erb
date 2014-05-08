@@ -25,7 +25,7 @@
    		<%= link_to instructor.proper_name, instructor_path(instructor) %> <br>
    		<% end %>
     </td>
-    <td><%= link_to 'Edit', edit_camp_path(camp), class: "button tiny radius" %></td>
+    <td><%= link_to(image_tag('edit.png'), edit_camp_path(camp)) %></td>
   </tr>
 <% end %>
 </table>
@@ -52,7 +52,7 @@
 	<td><% instructor.camps.each do |camp| %>
         <%= link_to camp.name, camp_path(camp) %><br>
       <% end %></td>
-    <td> <%= link_to 'Edit', edit_instructor_path(instructor), class: "button tiny radius" %></td>
+    <td><%= link_to(image_tag('edit.png'), edit_instructor_path(instructor)) %></td>
 </tr>
 <% end %>
 </table>
