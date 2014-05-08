@@ -9,6 +9,7 @@ ChessCamp::Application.routes.draw do
   resources :users
   resources :sessions
   resources :registrations
+  resources :reports
 
   # semi-static routes
   get 'home', to: 'home#index', as: :home

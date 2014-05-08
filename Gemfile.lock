@@ -123,6 +123,7 @@ GEM
     nested_form (0.3.2)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
+    pdfkit (0.6.2)
     polyglot (0.3.4)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
@@ -231,6 +232,7 @@ DEPENDENCIES
   meta_request
   mocha
   nested_form
+  pdfkit
   quiet_assets
   rails (= 4.0.3)
   sass-rails (~> 4.0.0)
