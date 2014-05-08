@@ -3,15 +3,17 @@
  <div id="home">
 <%end %>
 <% end %>
-  <div
+  <% unless (logged_in?) && (current_user.role? :admin )%>
+  <div class="contain-to-grid">
+    <% end %>
     <nav class="top-bar" data-topbar>
       <ul class="title-area">
         <li class="name">
-          <%= link_to image_tag('amcc_logo.png'), home_path %>
+          <%= link_to image_tag('amcc_logo.png'), home_path %> A&M
         </li>
       </ul>
       <section class="top-bar-section">
-        <ul class="left">
+        <ul class="right">
           <!-- options for curriculums -->
           <% if can? :read, Curriculum %>
           <li class="has-dropdown">
