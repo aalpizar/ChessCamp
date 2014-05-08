@@ -1,0 +1,65 @@
+
+	<h1>Hello, <%= current_user.instructor.proper_name %>!</h1>
+<div class="small-7 columns">
+	<% if current_user.instructor.proper_name == "Alex Heimann" %>
+		<%= image_tag 'alex.png', class: "picture" %>
+	<% elsif current_user.instructor.proper_name == "Mark Heimann" %>
+		<%= image_tag 'mark.png', class: "picture" %>
+	<% elsif current_user.instructor.picture_url.nil? %>
+		<%= image_tag 'instructor.png', class: "picture" %>
+	<% else %>
+    	<%= image_tag current_user.instructor.picture_url, class: "picture" %>
+	<% end %>
+
+	<br><br>
+	<% unless current_user.instructor.bio.empty? %>
+	<b>Bio:&nbsp;&nbsp;</b>
+	 <%= current_user.instructor.bio %> <br></br>
+	<% end %></center>
+	
+	<b>Email:&nbsp;&nbsp;</b>
+	   <%= current_user.instructor.email %> <br /><br />
+
+	<b>Phone:&nbsp;&nbsp;</b>
+	   <%= number_to_phone(current_user.instructor.phone) %> <br /><br />
+
+	<b>Status:&nbsp;&nbsp;</b>
+	   <% if current_user.instructor.active == true %> 
+          <%= "Active" %> 
+        <% else %>
+          <%= "Not Active" %> 
+        <% end %><br /><br />
+
+        <%= link_to "Edit", edit_instructor_path(current_user.instructor) %><br><br><br>
+
+     <% if current_user.instructor.user %>
+		<h3> User Details </h3><br>
+		<b> Username: </b>
+		<%= current_user.instructor.user.username %><br><br>
+		<b>Role: </b>
+		<%= current_user.instructor.user.role %><br><br>
+    <% end %>
+</div>
+
+<div class="small-5 columns">
+<fieldset>
+<h3>Upcoming Camps:</h3>
+<table>
+    <th width="200">Name</th>
+    <th width="100">Date</th>
+    <th width="100"> Time </th>
+  </thead>
+
+<% for camp in current_user.instructor.camps.upcoming.chronological %>
+  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+    <td align="left">&nbsp;<%= link_to camp.name, camp_path(camp) %></td>
+    <td align="left">&nbsp;<%= camp.start_date.strftime('%m/%d/%y') %> 
+  <% if camp.start_date != camp.end_date %>
+    <%= "- #{camp.end_date.strftime('%m/%d/%y')}" %>
+  <% end %></td>
+  <td align="left"><%= camp.time_slot == "am" ? "Morning" : "Afternoon" %> </td>
+  </tr>
+<% end %>
+</table>
+<p class="supertiny">&nbsp;</p><br /><br />
+</fieldset>
