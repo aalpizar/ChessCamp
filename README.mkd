@@ -10,8 +10,10 @@ To set this up, clone this repository, run the `bundle install` command to ensur
 - over 200 students
 - over 35 camps
 
-Many objects are created with some element of randomness so you will get slightly different results each time it is run.  However, instructors and users are fixed.  All users in the system have a password of 'secret'.  In terms of users there are two admins (Alex and Mark) and four instructor-level users (our four Head TAs).  The username for each is their first name in all lowercase.
+In terms of users there are two admins (Alex and Mark) and four instructor-level users.
 
 #### Login ####
+In terms of users, there are two admins (Alex and Mark) and four instructor-level users.All users in the system have a password: `secret`. The username for each is their first name in all lowercase. 
+
 To login as an administration, please use username: `alex` and password: `secret`. If you would like to login as an instructor, use username: `patrick` and password: `secret`.	
 
