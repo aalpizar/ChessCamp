@@ -1,4 +1,4 @@
-## 67-272: Chess Camp ##
+## Chess Camp ##
 
 ### Chess camp administration system developed in Ruby on Rails ###
 
