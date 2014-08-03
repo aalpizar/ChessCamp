@@ -8,12 +8,13 @@
   <% if @location.street_2%> <%= @location.street_2 %><br /> <% end %>
   <%= @location.city %>, <%= @location.state %> <%= @location.zip %> <br><br>
 
+<% if (logged_in?) && (current_user.role? :admin )%>
 <strong>Maximum Capacity:&nbsp;&nbsp;</strong> 
   <%= @location.max_capacity %><br /><br />
 
   <% if can? :update, Location %>  	
   <%= link_to "Edit this location", edit_location_path(@location), class: "button tiny radius" %>&nbsp;&nbsp;
-<%= link_to 'Destroy location', location_path(@location), data: { confirm: 'Are you sure you want to permanently remove this location from the system?' }, method: :delete, class: "button tiny radius alert" %> <% end %>
+<%= link_to 'Destroy location', location_path(@location), data: { confirm: 'Are you sure you want to permanently remove this location from the system?' }, method: :delete, class: "button tiny radius alert" %> <% end %> <%end %>
 </div>
 <div class="small-6 columns"></div>
 

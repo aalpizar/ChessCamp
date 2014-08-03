@@ -9,9 +9,8 @@
     <th width="120">Zip</th>
      <% if can? :update, Location %>
     <th width="120">Max Capacity</th>
+    <th width="260"><th>
     <% end %>
-    <th></th>
-    <th></th>
   </tr>
 
 <% locations.each do |location| %>
@@ -21,7 +20,7 @@
     <td align="center"><%= location.city %></td>
     <td align="center"><%= location.state %></td>
     <td align="center"><%= location.zip %> </td>
-     <% if can? :update, Location %>
+     <% if (logged_in?) && (current_user.role? :admin )%>
     <td align="center"><%= location.max_capacity %></td>
     <td><%= link_to(image_tag('edit.png'), edit_location_path(location)) %></td>
     <%end %>
