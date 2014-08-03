@@ -1,6 +1,6 @@
 <h3><%= @location.name%> Location Details</h3><br />
-<div class="small-6 columns">
-<strong>Name:&nbsp;&nbsp;</strong> 
+<div class="small-4 columns">
+<strong>Name:&nbsp;&nbsp;</strong> <br><br>
   <%= @location.name %><br /><br />
 
 <strong>Address:&nbsp;&nbsp;</strong> <br><br>
@@ -16,10 +16,7 @@
   <%= link_to "Edit this location", edit_location_path(@location), class: "button tiny radius" %>&nbsp;&nbsp;
 <%= link_to 'Destroy location', location_path(@location), data: { confirm: 'Are you sure you want to permanently remove this location from the system?' }, method: :delete, class: "button tiny radius alert" %> <% end %> <%end %>
 </div>
-<div class="small-6 columns"></div>
-
-<div class="small-4 columns">
-<strong>Map:&nbsp;&nbsp;</strong> <center>
+<div class="small-8 columns">
 <fieldset>
 <%= image_tag @location.create_map_link %> <br /><br />  </center>
 </fieldset>
