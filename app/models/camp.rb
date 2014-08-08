@@ -12,7 +12,7 @@ class Camp < ActiveRecord::Base
   # validations
   validates_presence_of :curriculum_id, :time_slot, :start_date
   validates_numericality_of :cost, only_integer: true, greater_than_or_equal_to: 0
-  validates_date :start_date, :on_or_after => lambda { Date.today }, :on_or_after_message => "cannot be in the past", on:  :create
+  validates_date :start_date
   validates_date :end_date, :on_or_after => :start_date
   validates_inclusion_of :time_slot, in: %w[am pm], message: "is not an accepted time slot"
   validates_numericality_of :max_students, only_integer: true, greater_than: 0, allow_blank: true
